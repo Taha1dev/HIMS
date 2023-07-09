@@ -108,7 +108,7 @@ class PatientAppointmentController extends Controller
   public function doctorOfClinic(Clinic $id)
   {
     //return DoctorOfDepartmentResource::collection($id->employees()->whereHas('EmployeeType', fn ($query) => $query->where('Type', 'Doctor'))->get());
-    return DoctorOfClinicResource::collection($id->department->employees()->whereHas('EmployeeType', fn ($query) => $query->where('Type', 'Doctor'))->get());
+    return DoctorOfClinicResource::collection($id->department?->employees()->whereHas('EmployeeType', fn ($query) => $query->where('Type', 'Doctor'))->get());
   }
   /**
    * See doctors from one department
